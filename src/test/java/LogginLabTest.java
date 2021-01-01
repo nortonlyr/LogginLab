@@ -25,10 +25,19 @@ public class LogginLabTest {
             if (lab.thresholdExceeds(i)) {
                 logger.log(Level.INFO, "Threshold not reached! It is " + i);
                 assertTrue(lab.thresholdExceeds(i));
+            } else if (lab.thresholdReached(i)){
+            	logger.log(Level.INFO, "Threshold finally reached!");
+            	assertTrue(lab.thresholdReached(i));
+            	assertFalse(lab.thresholdReached(i));
             } else {
-                logger.log(Level.INFO, "Threshold finally reached!");
-                assertFalse(lab.thresholdExceeds(i));
+            	logger.log(Level.INFO,"Huh?");
+            	assertFalse(lab.thresholdReached(i));
+            	assertFalse(lab.thresholdReached(i));
             }
+//            else {
+//                logger.log(Level.INFO, "Threshold finally reached!");
+//                assertFalse(lab.thresholdExceeds(i));
+//            }
         }
     }
 
